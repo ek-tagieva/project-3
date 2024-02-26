@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Изменение цвета блоков</title>
+<style>
+    .block {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+    }
+</style>
+</head>
+<body>
+
+<label>Введите число: <input type="number" id="numberInput" min="1" value="1"></label>
+<label>Выберите цвет: <input type="color" id="colorInput"></label>
+
+<div id="blocksContainer"></div>
+
+<script>
+const numberInput = document.getElementById('numberInput');
+const colorInput = document.getElementById('colorInput');
+const blocksContainer = document.getElementById('blocksContainer');
+let clickCount = 0;
+
+function createBlocks() {
+    blocksContainer.innerHTML = ''; // Очищаем контейнер перед созданием новых блоков
+    const numberOfBlocks = parseInt(numberInput.value);
+
+    for (let i = 1; i <= numberOfBlocks; i++) {
+        const block = document.createElement('div');
+        block.className = 'block';
+        block.textContent = i;
+        blocksContainer.appendChild(block);
+    }
+}
+
+function colorBlocks() {
+    const blocks = document.querySelectorAll('.block');
+
+    blocks.forEach((block, index) => {
+        if ((clickCount % 2 === 0 && index % 2 === 0) || (clickCount % 2 !== 0 && index % 2 !== 0)) {
+            block.style.backgroundColor = colorInput.value;
+        } else {
+            block.style.backgroundColor = 'transparent';
+        }
+    });
+}
+
+numberInput.addEventListener('input', () => {
+    createBlocks();
+    colorBlocks();
+});
+
+colorInput.addEventListener('input', () => {
+    clickCount++;
+    colorBlocks();
+});
+
+createBlocks(); // Создаем блоки при загрузке страницы
+</script>
+
+</body>
+</html>

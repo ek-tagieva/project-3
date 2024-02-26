@@ -1,0 +1,16 @@
+.slider {
+    width: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-container {
+    display: flex;
+}
+
+.slider-item {
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    margin: 10px;
+}
