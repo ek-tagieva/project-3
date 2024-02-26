@@ -30,7 +30,7 @@ const blocksContainer = document.getElementById('blocksContainer');
 let clickCount = 0;
 
 function createBlocks() {
-    blocksContainer.innerHTML = ''; // Очищаем контейнер перед созданием новых блоков
+    blocksContainer.innerHTML = ''; 
     const numberOfBlocks = parseInt(numberInput.value);
 
     for (let i = 1; i <= numberOfBlocks; i++) {
@@ -63,7 +63,7 @@ colorInput.addEventListener('input', () => {
     colorBlocks();
 });
 
-createBlocks(); // Создаем блоки при загрузке страницы
+createBlocks(); 
 </script>
 
 </body>
